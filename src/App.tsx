@@ -1,20 +1,19 @@
-import Hero from "./components/Hero"
-import Navbar from "./components/Navbar"
-import Sidebar from "./components/Sidebar"
-
+import { Hero, Navbar, Sidebar } from "./components";
+import Theme from "./components/Theme";
 
 function App() {
+  const { theme, handleThemeSwitch } = Theme();
 
   return (
     <div className="w-screen h-screen overflow-hidden">
-      <Navbar />
+      <Navbar toggleTheme={handleThemeSwitch} theme={theme} />
 
       <div className="flex">
         <Sidebar />
         <Hero />
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

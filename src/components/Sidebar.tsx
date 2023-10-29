@@ -4,7 +4,7 @@ const Sidebar = () => {
   return (
     <div
       id="sidebar"
-      className="hidden md:flex bg-slate-600 md:w-[20vw] xl:w-[15vw] h-screen"
+      className="hidden md:flex bg-slate-400 dark:bg-[#2c2f33] md:w-[20vw] xl:w-[15vw] h-screen"
     >
     </div>
   );
