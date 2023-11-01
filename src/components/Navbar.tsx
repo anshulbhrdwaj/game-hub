@@ -1,4 +1,3 @@
-import React from "react";
 import { logo, moon, sun } from "../assets";
 
 interface Props {
