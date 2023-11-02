@@ -1,13 +1,11 @@
-import React from 'react'
-import GameGrid from './GameGrid'
-
+import GameGrid from "./GameGrid";
 
 const Hero = () => {
   return (
-    <main className='flex bg-slate-200 dark:bg-[#424549] w-screen h-screen'>
+    <main className="flex w-full h-screen mt-10 2xl:mt-14 md:ml-[20vw] xl:ml-[15vw]">
       <GameGrid />
     </main>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

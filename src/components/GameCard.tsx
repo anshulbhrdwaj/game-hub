@@ -1,5 +1,5 @@
-import React from "react";
 import { Game } from "../hooks/useGames";
+import PlatformIconList from "./PlatformIconList";
 
 interface Props {
   game: Game;
@@ -22,6 +22,11 @@ const GameCard = ({ game }: Props) => {
               {game.name}
             </h5>
           </a>
+          <div className="flex gap-1">
+            <PlatformIconList
+              platforms={game.parent_platforms.map((p) => p.platform)}
+            />
+          </div>
         </div>
       </div>
     </>
