@@ -34,7 +34,7 @@ const PlatformIconList = ({ platforms }: Props) => {
         const IconComponent = iconMap[platform.slug];
 
         if (IconComponent) {
-          return <IconComponent key={platform.slug} size={15} color="lightgray"/>;
+          return <IconComponent key={platform.slug} size={18} color="lightgray"/>;
         } else {
           return null;
         }
