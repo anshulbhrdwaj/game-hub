@@ -5,10 +5,10 @@ function App() {
   const { theme, handleThemeSwitch } = Theme();
 
   return (
-    <div className="w-screen h-screen">
+    <div className="w-screen min-h-screen">
       <Navbar toggleTheme={handleThemeSwitch} theme={theme} />
 
-      <div className="flex h-screen w-screen ">
+      <div className="flex min-h-screen w-screen ">
         <Sidebar />
         <Hero />
       </div>

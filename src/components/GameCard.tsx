@@ -8,7 +8,7 @@ interface Props {
 const GameCard = ({ game }: Props) => {
   return (
     <>
-      <div className="h-auto max-w-full rounded-lg bg-slate-500 border border-gray-200 shadow  dark:bg-[#2c2f33] dark:border-gray-700">
+      <div className="h-auto max-w-full rounded-lg bg-slate-500 border border-slate-200 shadow  dark:bg-[#2c2f33] dark:border-[#424549]">
         <a href="#">
           <img
             className="h-auto max-w-full rounded-lg"
