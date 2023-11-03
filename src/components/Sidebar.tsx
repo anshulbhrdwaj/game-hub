@@ -2,6 +2,8 @@ import GenreList from "./GenreList";
 
 
 const Sidebar = () => {
+
+  
   return (
     <div
       id="sidebar"
