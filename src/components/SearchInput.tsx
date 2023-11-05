@@ -1,6 +1,19 @@
-const SearchInput = () => {
+import { useRef } from "react";
+
+interface Props {
+  onSearch: (searchText: string) => void;
+}
+
+const SearchInput = ({ onSearch }: Props) => {
+  const ref = useRef<HTMLInputElement>(null);
   return (
-    <form className="flex items-center w-[75%] 2xl:w-3/5 h-9" onSubmit={() => console.log()}>
+    <form
+      className="flex items-center w-[75%] 2xl:w-3/5 h-9"
+      onSubmit={(event) => {
+        event.preventDefault();
+        if (ref.current) onSearch(ref.current.value);
+      }}
+    >
       <label htmlFor="simple-search" className="sr-only">
         Search
       </label>
@@ -15,14 +28,15 @@ const SearchInput = () => {
           >
             <path
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0V6a3 3 0 0 0-3-3H9m1.5-2-2 2 2 2"
             />
           </svg>
         </div>
         <input
+          ref={ref}
           type="text"
           id="simple-search"
           className="bg-gray-50 border h-8 2xl:h-10 border-gray-300 text-gray-900 text-sm rounded-full block w-full pl-10 p-2.5 outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
@@ -42,9 +56,9 @@ const SearchInput = () => {
           >
             <path
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
             />
           </svg>

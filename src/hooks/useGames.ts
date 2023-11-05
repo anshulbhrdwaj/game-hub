@@ -23,6 +23,7 @@ const useGame = (gameQurey: GameQuery) =>
         genres: gameQurey.genre?.id,
         platforms: gameQurey.platform?.id,
         ordering: gameQurey.sortOrder,
+        search: gameQurey.searchText
       },
     },
     [gameQurey]

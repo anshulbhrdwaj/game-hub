@@ -13,6 +13,7 @@ export interface GameQuery {
   genre: Genres | null;
   platform: Platform | null;
   sortOrder: string;
+  searchText: string;
 }
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
   return (
     <div className="w-screen min-h-screen text-white">
       <Navbar toggleTheme={handleThemeSwitch} theme={theme}>
-        <SearchInput />
+        <SearchInput onSearch={searchText => setGameQuery({...gameQuery, searchText})} />
       </Navbar>
 
       <div className="flex min-h-screen w-screen ">
