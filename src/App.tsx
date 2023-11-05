@@ -7,6 +7,7 @@ import GameGrid from "./components/GameGrid";
 import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/useGames";
 import SortSelector from "./components/SortSelector";
+import SearchInput from "./components/SearchInput";
 
 export interface GameQuery {
   genre: Genres | null;
@@ -16,12 +17,14 @@ export interface GameQuery {
 
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-  // const [selectedOrder, setSelectedOrder] = useState();
+  // const [searchedGame, setSearchedGame] = useState();
   const { theme, handleThemeSwitch } = Theme();
 
   return (
     <div className="w-screen min-h-screen text-white">
-      <Navbar toggleTheme={handleThemeSwitch} theme={theme} />
+      <Navbar toggleTheme={handleThemeSwitch} theme={theme}>
+        <SearchInput />
+      </Navbar>
 
       <div className="flex min-h-screen w-screen ">
         <Sidebar>
