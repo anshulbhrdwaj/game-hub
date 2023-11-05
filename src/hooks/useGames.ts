@@ -16,12 +16,16 @@ export interface Game {
   metacritic: number;
 }
 
-const useGame = (
-  gameQurey: GameQuery
-) =>
+const useGame = (gameQurey: GameQuery) =>
   useData<Game>(
     "/games",
-    { params: { genres: gameQurey.genre?.id, platforms: gameQurey.platform?.id } },
+    {
+      params: {
+        genres: gameQurey.genre?.id,
+        platforms: gameQurey.platform?.id,
+        ordering: gameQurey.sortOrder,
+      },
+    },
     [gameQurey]
   );
 

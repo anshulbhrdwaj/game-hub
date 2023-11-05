@@ -11,11 +11,12 @@ import SortSelector from "./components/SortSelector";
 export interface GameQuery {
   genre: Genres | null;
   platform: Platform | null;
+  sortOrder: string;
 }
 
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-  const [selectedOrder, setSelectedOrder] = useState("");
+  // const [selectedOrder, setSelectedOrder] = useState();
   const { theme, handleThemeSwitch } = Theme();
 
   return (
@@ -41,8 +42,10 @@ function App() {
             </div>
             <div className="flex-col">
               <SortSelector
-                selectedOrder={selectedOrder}
-                onSelectOrder={(order) => setSelectedOrder(order)}
+                selectedOrder={gameQuery.sortOrder}
+                onSelectSortOrder={(sortOrder) =>
+                  setGameQuery({ ...gameQuery, sortOrder })
+                }
               />
             </div>
           </div>

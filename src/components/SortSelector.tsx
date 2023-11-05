@@ -1,12 +1,25 @@
 import { useState } from "react";
 import { BsFillCaretDownFill } from "react-icons/bs";
 
+export interface Order {
+  value: string;
+  label: string;
+}
 interface Props {
   selectedOrder: string;
-  onSelectOrder: (order: string) => void;
+  onSelectSortOrder: (value: string) => void;
 }
 
-const SortSelector = ({ onSelectOrder, selectedOrder }: Props) => {
+const SortSelector = ({ onSelectSortOrder, selectedOrder }: Props) => {
+  const sortOrders = [
+    { value: "", label: "Relevance" },
+    { value: "-added", label: "Date Added" },
+    { value: "name", label: "Name" },
+    { value: "-released", label: "Released Date" },
+    { value: "-metacritic", label: "Popularity" },
+    { value: "-rating", label: "Average rating" },
+  ];
+  const orderLabel = sortOrders.find((order) => order.value === selectedOrder);
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -18,7 +31,7 @@ const SortSelector = ({ onSelectOrder, selectedOrder }: Props) => {
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
-        {`Order by: ${selectedOrder || 'Relevance'}`} <BsFillCaretDownFill />
+        Order by: {orderLabel?.label || 'Relevance'} <BsFillCaretDownFill />
       </button>
 
       {/* Dropdown menu */}
@@ -34,54 +47,16 @@ const SortSelector = ({ onSelectOrder, selectedOrder }: Props) => {
           onMouseLeave={() => setHovered(false)}
         >
           <ul className={`py-2 text-sm text-gray-700 dark:text-gray-200`}>
-            <li>
-              <button
-                onClick={() => onSelectOrder("Relevance")}
-                className="flex px-4 py-2 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Relevance
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => onSelectOrder("Date Added")}
-                className="flex px-4 py-2 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Date Added
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => onSelectOrder("Name")}
-                className="flex px-4 py-2 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Name
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => onSelectOrder("Release date")}
-                className="flex px-4 py-2 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Release date
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => onSelectOrder("Popularity")}
-                className="flex px-4 py-2 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Popularity
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => onSelectOrder("Average rating")}
-                className="flex px-4 py-2 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Average rating
-              </button>
-            </li>
+            {sortOrders.map((order) => (
+              <li key={order.value}>
+                <button
+                  onClick={() => onSelectSortOrder(order.value)}
+                  className="flex px-4 py-2 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >
+                  {order.label}
+                </button>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
