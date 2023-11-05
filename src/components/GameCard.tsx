@@ -24,8 +24,8 @@ const GameCard = ({ game }: Props) => {
               {game.name}
             </h5>
           </a>
-          <div className="w-full flex justify-between items-center ">
-            <div className="flex gap-2 justify-center items-center">
+          <div className="w-full flex justify-between items-center flex-wrap gap-2">
+            <div className="flex gap-1 justify-center items-center">
               <PlatformIconList
                 platforms={game.parent_platforms.map((p) => p.platform)}
               />
