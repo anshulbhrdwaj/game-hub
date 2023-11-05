@@ -22,7 +22,7 @@ function App() {
 
       <div className="flex min-h-screen w-screen ">
         <Sidebar>
-          <GenreList onSelectGenre={genre => setGameQuery({...gameQuery, genre})} />
+          <GenreList selectedGenre={gameQuery} onSelectGenre={genre => setGameQuery({...gameQuery, genre})} />
         </Sidebar>
         <Hero>
           <div className=" mx-[3vw] my-[4vh] w-44">
