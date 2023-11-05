@@ -7,9 +7,13 @@ import GameGrid from "./components/GameGrid";
 import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/useGames";
 
+export interface GameQuery {
+  genre: Genres | null;
+  platform: Platform | null;
+}
+
 function App() {
-  const [selectedGenre, setSelectedGenre] = useState<Genres | null>(null);
-  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null);
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
   const { theme, handleThemeSwitch } = Theme();
 
   return (
@@ -18,13 +22,18 @@ function App() {
 
       <div className="flex min-h-screen w-screen ">
         <Sidebar>
-          <GenreList onSelectGenre={setSelectedGenre} />
+          <GenreList onSelectGenre={genre => setGameQuery({...gameQuery, genre})} />
         </Sidebar>
         <Hero>
           <div className=" mx-[3vw] my-[4vh] w-44">
-            <PlatformSelector onSelectPlatform={(platform) => setSelectedPlatform(platform)} selectedPlatform={selectedPlatform?.name}/> 
+            <PlatformSelector
+              onSelectPlatform={(platform) => setGameQuery({...gameQuery,platform})}
+              selectedPlatform={gameQuery.platform?.name}
+            />
           </div>
-          <GameGrid selectedGenre={selectedGenre} selectedPlatform={selectedPlatform} />
+          <GameGrid
+            gameQuery={gameQuery}
+          />
         </Hero>
       </div>
     </div>
