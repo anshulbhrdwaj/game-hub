@@ -6,6 +6,7 @@ import GenreList from "./components/GenreList";
 import GameGrid from "./components/GameGrid";
 import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/useGames";
+import SortSelector from "./components/SortSelector";
 
 export interface GameQuery {
   genre: Genres | null;
@@ -14,6 +15,7 @@ export interface GameQuery {
 
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
+  const [selectedOrder, setSelectedOrder] = useState("");
   const { theme, handleThemeSwitch } = Theme();
 
   return (
@@ -22,18 +24,30 @@ function App() {
 
       <div className="flex min-h-screen w-screen ">
         <Sidebar>
-          <GenreList selectedGenre={gameQuery} onSelectGenre={genre => setGameQuery({...gameQuery, genre})} />
+          <GenreList
+            selectedGenre={gameQuery}
+            onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+          />
         </Sidebar>
         <Hero>
-          <div className=" mx-[3vw] my-[4vh] w-44">
-            <PlatformSelector
-              onSelectPlatform={(platform) => setGameQuery({...gameQuery,platform})}
-              selectedPlatform={gameQuery.platform?.name}
-            />
+          <div className=" mx-[3vw] my-[4vh] flex gap-3">
+            <div className="flex-col">
+              <PlatformSelector
+                onSelectPlatform={(platform) =>
+                  setGameQuery({ ...gameQuery, platform })
+                }
+                selectedPlatform={gameQuery.platform?.name}
+              />
+            </div>
+            <div className="flex-col">
+              <SortSelector
+                selectedOrder={selectedOrder}
+                onSelectOrder={(order) => setSelectedOrder(order)}
+              />
+            </div>
           </div>
-          <GameGrid
-            gameQuery={gameQuery}
-          />
+
+          <GameGrid gameQuery={gameQuery} />
         </Hero>
       </div>
     </div>
