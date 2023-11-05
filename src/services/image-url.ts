@@ -1,5 +1,7 @@
+import { PlaceHolder } from "../assets";
+
 const getCroppedImageUrl = (url: string) => {
-  if(!url) return'';
+  if(!url) return PlaceHolder;
   const target = "media/";
   const index = url.indexOf(target) + target.length;
 
