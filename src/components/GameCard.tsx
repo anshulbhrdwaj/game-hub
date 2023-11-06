@@ -2,6 +2,7 @@ import { Game } from "../hooks/useGames";
 import getCroppedImageUrl from "../services/image-url";
 import CriticScore from "./CriticScore";
 import PlatformIconList from "./PlatformIconList";
+import Rating from "./Rating";
 
 interface Props {
   game: Game;
@@ -10,7 +11,7 @@ interface Props {
 const GameCard = ({ game }: Props) => {
   return (
     <>
-      <div className="h-auto max-w-full rounded-lg bg-slate-500 shadow dark:bg-[#2c2f33]">
+      <div className="h-auto max-w-full rounded-lg bg-slate-500 shadow dark:bg-[#2c2f33] ">
         <a href="#">
           <img
             className="h-auto max-w-full rounded-lg"
@@ -32,6 +33,9 @@ const GameCard = ({ game }: Props) => {
               {game.name}
             </h5>
           </a>
+          <div className="my-2 pt-1">
+            <Rating rating={game.rating_top} />
+          </div>
         </div>
       </div>
     </>
