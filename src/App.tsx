@@ -23,7 +23,7 @@ function App() {
   const { theme, handleThemeSwitch } = Theme();
 
   return (
-    <div className="w-screen min-h-screen text-white">
+    <div className="w-screen min-h-screen text-white overflow-x-hidden">
       <Navbar toggleTheme={handleThemeSwitch} theme={theme}>
         <SearchInput onSearch={searchText => setGameQuery({...gameQuery, searchText})} />
       </Navbar>
