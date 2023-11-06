@@ -20,7 +20,7 @@ const Rating = ({ rating }: Props) => {
   );
 
   const goldenStars = Array.from({length: goldenStarsCount},(_,index) => (
-    createStar("text-yellow-400", index)
+    createStar("text-yellow-300 dark:text-yellow-400", index)
   ))
 
   const greyStars = Array.from({ length: greyStarsCount }, (_, index) =>

@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import GenreList from "./GenreList";
 
 interface Props {
   children: ReactNode;
