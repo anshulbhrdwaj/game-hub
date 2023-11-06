@@ -8,6 +8,7 @@ import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/useGames";
 import SortSelector from "./components/SortSelector";
 import SearchInput from "./components/SearchInput";
+import GameHeading from "./components/GameHeading";
 
 export interface GameQuery {
   genre: Genres | null;
@@ -35,7 +36,10 @@ function App() {
           />
         </Sidebar>
         <Hero>
-          <div className=" mx-[3vw] my-[4vh] flex gap-3">
+          <div className="flex w-full h-16 items-center px-[3vw] mt-[2vh]">
+            <GameHeading gameQuery={gameQuery} />
+          </div>
+          <div className=" mx-[3vw] my-[3vh] flex gap-3">
             <div className="flex-col">
               <PlatformSelector
                 onSelectPlatform={(platform) =>
