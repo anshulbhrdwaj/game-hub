@@ -19,12 +19,7 @@ const GameCard = ({ game }: Props) => {
           />
         </a>
         <div className="p-5">
-          <a href="#">
-            <h5 className="mb-1 text-2xl font-bold tracking-tight text-white">
-              {game.name}
-            </h5>
-          </a>
-          <div className="w-full flex justify-between items-center flex-wrap gap-2">
+          <div className="w-full flex justify-between items-center flex-wrap gap-2 mb-2">
             <div className="flex gap-1 justify-center items-center">
               <PlatformIconList
                 platforms={game.parent_platforms.map((p) => p.platform)}
@@ -32,6 +27,11 @@ const GameCard = ({ game }: Props) => {
             </div>
             <CriticScore score={game.metacritic} />
           </div>
+          <a href="#">
+            <h5 className="text-2xl font-bold tracking-tight text-white">
+              {game.name}
+            </h5>
+          </a>
         </div>
       </div>
     </>
