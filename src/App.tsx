@@ -36,7 +36,7 @@ function App() {
           />
         </Sidebar>
         <Hero>
-          <div className="flex w-full h-16 items-center px-[3vw] mt-[2vh]">
+          <div className="flex w-full h-16 items-center mx-[3vw] mt-[2vh]">
             <GameHeading gameQuery={gameQuery} />
           </div>
           <div className=" mx-[3vw] my-[3vh] flex gap-3">
